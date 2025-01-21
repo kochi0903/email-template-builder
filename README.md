@@ -15,12 +15,10 @@ A modern, responsive email template builder built with React, Vite, and Tailwind
   - Text size adjustment
   - Color selection
   - Alignment controls
-  - Font styling
 
 - **Section Management**
   - Add new sections
   - Reorder sections
-  - Delete sections
   - Edit section content
 
 - **Export Functionality**
