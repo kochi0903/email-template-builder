@@ -1,4 +1,4 @@
-const downloadTemplateasJSON = (sectionList) => {
+const downloadTemplateasJSON = (sectionList,imageURL) => {
   const template = {
     imageURL,
     sectionList,

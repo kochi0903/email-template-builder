@@ -7,18 +7,23 @@ A modern, responsive email template builder built with React, Vite, and Tailwind
 ## 🌟 Features
 
 - **Visual Email Editor**
+
   - Drag and drop sections
   - Real-time preview
   - Customizable text and styling
 
 - **Rich Customization Options**
+
   - Text size adjustment
   - Color selection
   - Alignment controls
+  - Font styling
 
 - **Section Management**
+
   - Add new sections
   - Reorder sections
+  - Delete sections
   - Edit section content
 
 - **Export Functionality**
@@ -35,27 +40,32 @@ A modern, responsive email template builder built with React, Vite, and Tailwind
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - Node.js (v14.0.0 or higher)
 - npm (v6.0.0 or higher)
 
 ## 💻 Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/email-template-builder.git
 ```
 
 2. Navigate to the project directory:
+
 ```bash
 cd email-template-builder
 ```
 
 3. Install dependencies:
+
 ```bash
 npm install
 ```
 
 4. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -79,11 +89,13 @@ email-template-builder/
 ## 📝 Usage
 
 1. **Creating a New Template**
+
    - Click "Add Section" to add new content blocks
    - Click on any section to edit its content and styling
    - Use the styling controls in the right panel to customize appearance
 
 2. **Editing Sections**
+
    - Select any section to modify its content
    - Use the toolbar to adjust text size, color, and alignment
    - Drag sections up or down to reorder
@@ -100,17 +112,14 @@ The project uses a custom Tailwind configuration. To modify it, edit `tailwind.c
 
 ```javascript
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       // Add your custom configurations here
     },
   },
   plugins: [],
-}
+};
 ```
 
 ## 🤝 Contributing

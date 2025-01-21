@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { ArrowUp, ArrowDown, Download, Plus, Upload } from "lucide-react";
+import {
+  ArrowUp,
+  ArrowDown,
+  Download,
+  Plus,
+  Upload,
+  CircleX,
+} from "lucide-react";
 import ColorStyling from "./components/ColorStyling";
 import AlignmentStyling from "./components/AlignmentStyling";
 import TextSizeStyling from "./components/TextSizeStyling";
 import SectionWriter from "./components/SectionWriter";
 import downloadTemplateasJSON from "./utils/downloadAsJson";
 import downloadTemplateasHTML from "./utils/downloadAsHtml";
+import FontWeightStyling from "./components/FontWeightStyling";
 
 const EmailBuilder = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -34,7 +42,6 @@ const EmailBuilder = () => {
     },
   ]);
   const [selectedSection, setSelectedSection] = useState(null);
-  console.log(imageUrl);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -88,9 +95,15 @@ const EmailBuilder = () => {
         color: "text-gray-800",
         textAlign: "text-left",
         fontWeight: "font-normal",
+        fontStyle:"none",
+        textDecoration:"none"
       },
     };
     setSections([...sections, newSection]);
+  };
+
+  const deleteSection = (id) => {
+    setSections(sections.filter((section) => section.id !== id));
   };
 
   return (
@@ -108,9 +121,9 @@ const EmailBuilder = () => {
                   <div className="relative mt-2">
                     <button
                       onClick={() => setImageUrl(null)}
-                      className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                      className="p-1 bg-red-100 rounded-full hover:bg-red-200"
                     >
-                      &times;
+                      <CircleX size={12} />
                     </button>
                     <img
                       src={imageUrl}
@@ -148,7 +161,7 @@ const EmailBuilder = () => {
               >
                 <div
                   className={`${section.styles.fontSize} ${section.styles.color} 
-                 ${section.styles.textAlign} ${section.styles.fontWeight}`}
+                 ${section.styles.textAlign} ${section.styles.fontWeight} ${section.styles.fontStyle} ${section.styles.textDecoration}`}
                 >
                   {section.content}
                 </div>
@@ -158,18 +171,27 @@ const EmailBuilder = () => {
                       e.stopPropagation();
                       moveSection(index, "up");
                     }}
-                    className="p-1 bg-gray-100 rounded hover:bg-gray-200"
+                    className="p-1 bg-gray-100 rounded-full hover:bg-gray-200"
                   >
-                    <ArrowUp size={16} />
+                    <ArrowUp size={12} />
                   </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       moveSection(index, "down");
                     }}
-                    className="p-1 bg-gray-100 rounded hover:bg-gray-200"
+                    className="p-1 bg-gray-100 rounded-full hover:bg-gray-200"
                   >
-                    <ArrowDown size={16} />
+                    <ArrowDown size={12} />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteSection(section.id);
+                    }}
+                    className="p-1 bg-red-100 rounded-full hover:bg-red-200"
+                  >
+                    <CircleX size={12} />
                   </button>
                 </div>
               </div>
@@ -199,6 +221,11 @@ const EmailBuilder = () => {
                   updateSectionStyle={updateSectionStyle}
                 />
                 <ColorStyling
+                  section={selectedSection}
+                  updateSectionStyle={updateSectionStyle}
+                />
+                <FontWeightStyling
+                  sectionList={sections}
                   section={selectedSection}
                   updateSectionStyle={updateSectionStyle}
                 />
